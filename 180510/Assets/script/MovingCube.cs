@@ -9,7 +9,7 @@ public class MovingCube : MonoBehaviour {
 
   //移動速度
   private const float SPEED = 0.1f;
-
+  
   private void Update () {
     Vector3 pos = transform.position;
 

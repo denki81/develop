@@ -106,15 +106,13 @@ public class Joystick : MonoBehaviour
         _stick.transform.localRotation = Quaternion.identity;
         _stickPosition = Vector3.zero;
 
-        //スティックにImageセット
-        _stick.AddComponent<Image>();
     }
 
     //=================================================================================
     //計算
     //=================================================================================
 
-    //タッチされていいる座標をワールド座標で取得
+    //タッチされている座標をワールド座標で取得
     private Vector3 GetTouchPointInWorld()
     {
         //タップされている位置を画面内の座標に変換
@@ -126,6 +124,20 @@ public class Joystick : MonoBehaviour
         );
 
         return screenPos;
+    }
+
+	//スティックに対して始点を取得
+    private Vector3 GetStartPoint()
+    {
+        //タップされている位置を画面内の座標に変換
+        Vector2 startPos = Vector2.zero;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
+          new Vector2(Input.mousePosition.x, Input.mousePosition.y),
+          null,
+          out startPos
+        );
+        
+        return startPos;
     }
 
     //=================================================================================
@@ -173,7 +185,7 @@ public class Joystick : MonoBehaviour
         //スティックをタップされている場所に移動
         _stickPosition = GetTouchPointInWorld();
 
-        //移動場所が設定した半径を超えてる場合は制限内に抑える
+		//移動場所が設定した半径を超えてる場合は制限内に抑える
         float currentRadius = Vector3.Distance(Vector3.zero, _stick.transform.localPosition);
         if (currentRadius > _radius)
         {
@@ -189,9 +201,7 @@ public class Joystick : MonoBehaviour
             _stickPosition = limitedPosition;
         }
 
-    }
-
-    //=================================================================================
+    }    //=================================================================================
     //更新
     //=================================================================================
 
