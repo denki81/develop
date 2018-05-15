@@ -185,20 +185,22 @@ public class Joystick : MonoBehaviour
         //スティックをタップされている場所に移動
         _stickPosition = GetTouchPointInWorld();
 
-		//移動場所が設定した半径を超えてる場合は制限内に抑える
+		//移動場所が設定した半径を超えてる場合はパッドを追従させる
         float currentRadius = Vector3.Distance(Vector3.zero, _stick.transform.localPosition);
         if (currentRadius > _radius)
         {
 
             //角度計算
             float radian = Mathf.Atan2(_stick.transform.localPosition.y, _stick.transform.localPosition.x);
+			//パッドの移動量
+			float movement = currentRadius - _radius;
 
-            //円上にXとYを設定
-            Vector3 limitedPosition = Vector3.zero;
-            limitedPosition.x = _radius * Mathf.Cos(radian);
-            limitedPosition.y = _radius * Mathf.Sin(radian);
+            //パッドの新しく更新される位置を求める
+            Vector3 newPosition = Vector3.zero;
+			newPosition.x = movement * Mathf.Cos(radian);
+			newPosition.y = movement * Mathf.Sin(radian);
 
-            _stickPosition = limitedPosition;
+			_stick.transform.localPosition = newPosition;
         }
 
     }    //=================================================================================
