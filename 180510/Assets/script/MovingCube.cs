@@ -8,13 +8,14 @@ public class MovingCube : MonoBehaviour {
   private Joystick _joystick = null;
 
   //移動速度
-  private const float SPEED = 0.1f;
+  [SerializeField]
+  private float SPEED = 0.1f;
   
   private void Update () {
     Vector3 pos = transform.position;
 
-    pos.x += _joystick.Position.x * SPEED;
-    pos.z += _joystick.Position.y * SPEED;
+    pos.x += _joystick.Position.x * Time.deltaTime * SPEED;
+    pos.z += _joystick.Position.y * Time.deltaTime * SPEED;
 
     transform.position = pos;
   }
