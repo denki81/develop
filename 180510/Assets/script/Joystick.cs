@@ -196,11 +196,11 @@ public class Joystick : MonoBehaviour
 			float movement = currentRadius - _radius;
 
             //パッドの新しく更新される位置を求める
-            Vector3 newPosition = Vector3.zero;
+            var newPosition = Vector3.zero;
 			newPosition.x = movement * Mathf.Cos(radian);
 			newPosition.y = movement * Mathf.Sin(radian);
 
-			_stick.transform.localPosition = newPosition;
+			_stick.transform.position += newPosition;
         }
 
     }    //=================================================================================
