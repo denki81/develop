@@ -18,6 +18,10 @@ public class MovingCube : MonoBehaviour {
     pos.z += _joystick.Position.y * Time.deltaTime * SPEED;
 
     transform.position = pos;
+
+	GetComponent<Animator>().SetFloat("Direction_X", _joystick.Position.x);
+    GetComponent<Animator>().SetFloat("Direction_Y", _joystick.Position.y);
+
   }
 
 }

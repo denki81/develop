@@ -200,7 +200,7 @@ public class Joystick : MonoBehaviour
 			newPosition.x = movement * Mathf.Cos(radian);
 			newPosition.y = movement * Mathf.Sin(radian);
 
-			_stick.transform.position += newPosition;
+			transform.position += newPosition;
         }
 
     }    //=================================================================================
