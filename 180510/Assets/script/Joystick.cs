@@ -125,21 +125,7 @@ public class Joystick : MonoBehaviour
 
         return screenPos;
     }
-
-	//スティックに対して始点を取得
-    private Vector3 GetStartPoint()
-    {
-        //タップされている位置を画面内の座標に変換
-        Vector2 startPos = Vector2.zero;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
-          new Vector2(Input.mousePosition.x, Input.mousePosition.y),
-          null,
-          out startPos
-        );
-        
-        return startPos;
-    }
-
+   
     //=================================================================================
     //タップ
     //=================================================================================
