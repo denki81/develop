@@ -1,17 +1,9 @@
-﻿//  Joystick.cs
-//  http://kan-kikuchi.hatenablog.com/entry/uGUI_Joystick_2
-//
-//  Created by kan.kikuchi on 2016.07.19.
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
-/// ジョイスティック
-/// </summary>
 public class Joystick : MonoBehaviour
 {
 
@@ -158,7 +150,7 @@ public class Joystick : MonoBehaviour
     //ドラッグ終了時
     public void OnEndDrag()
     {
-        //スティックの位置を中心に
+		//スティックの位置を中心に
         _stickPosition = Vector3.zero;
 
         //スケールを0にして見えないように
